@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Lis 16, 2024 at 04:39 PM
+-- Generation Time: Lis 16, 2024 at 11:10 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -35,6 +35,31 @@ CREATE TABLE `adres` (
   `kod_pocztowy` varchar(7) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dumping data for table `adres`
+--
+
+INSERT INTO `adres` (`id`, `ulica`, `nr_domu`, `nr_mieszkania`, `kod_pocztowy`) VALUES
+(1, 'Gorkiego', 32, 13, '70-390'),
+(2, 'Gorkiego', 32, 13, '70-390'),
+(3, 'Gorkiego', 32, 13, '70-390'),
+(4, 'Gorkiego', 32, 13, '70-390'),
+(5, 'Gorkiego', 32, 13, '70-390'),
+(6, 'Gorkiego', 32, 13, '70-390'),
+(7, 'Gorkiego', 32, 13, '70-390'),
+(8, 'Gorkiego', 32, 13, '70-390'),
+(9, 'Gorkiego', 32, 13, '70-390'),
+(10, 'Gorkiego', 32, 13, '70-390'),
+(11, 'Gorkiego', 32, 13, '70-390'),
+(12, 'Gorkiego', 32, 13, '70-390'),
+(13, 'Gorkiego', 32, 13, '70-390'),
+(14, 'Gorkiego', 32, 13, '70-390'),
+(15, 'Gorkiego', 32, 13, '70-390'),
+(16, 'Gorkiego', 32, 13, '70-390'),
+(17, 'Gorkiego', 32, 13, '70-390'),
+(18, 'Gorkiego', 32, 13, '70-390'),
+(19, 'Gorkiego', 32, 13, '70-390');
+
 -- --------------------------------------------------------
 
 --
@@ -59,12 +84,19 @@ CREATE TABLE `uzytkownik` (
   `id` int(11) NOT NULL,
   `imie` varchar(50) DEFAULT NULL,
   `nazwisko` varchar(50) DEFAULT NULL,
-  `login` int(60) NOT NULL,
+  `login` varchar(60) NOT NULL,
   `haslo` varchar(60) NOT NULL,
   `plec` tinyint(1) DEFAULT NULL,
-  `zdjecie_src` varchar(100) DEFAULT NULL,
+  `zdjecie_src` varchar(255) DEFAULT NULL,
   `adres` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `uzytkownik`
+--
+
+INSERT INTO `uzytkownik` (`id`, `imie`, `nazwisko`, `login`, `haslo`, `plec`, `zdjecie_src`, `adres`) VALUES
+(4, 'Szymon', 'Prusiewicz', 'szymon_p', '$2y$10$qfV.L6PY1UejPqoaObmYUO684UpKym4v6U6vLz84sFhahfcMOehX2', 1, '/mnt/uwu/home_extended/szymon/Dokumenty/kodowanie/github/pizzeria/assets/users/zrzut_17-05-21_16-11-2024.png', 19);
 
 -- --------------------------------------------------------
 
@@ -101,6 +133,7 @@ ALTER TABLE `pizza`
 --
 ALTER TABLE `uzytkownik`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `login` (`login`) USING BTREE,
   ADD KEY `adres` (`adres`);
 
 --
@@ -119,7 +152,7 @@ ALTER TABLE `zamowienie`
 -- AUTO_INCREMENT for table `adres`
 --
 ALTER TABLE `adres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `pizza`
@@ -131,7 +164,7 @@ ALTER TABLE `pizza`
 -- AUTO_INCREMENT for table `uzytkownik`
 --
 ALTER TABLE `uzytkownik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `zamowienie`
