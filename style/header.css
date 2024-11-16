@@ -1,31 +1,28 @@
-/* Podstawowe stylowanie nagłówka */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px; /* Większy odstęp od boków */
+    padding: 10px 20px;
     background-color: #333;
     color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Sekcja z logo */
 header section img {
-    height: 60px; /* Większy obrazek logo */
+    height: 60px;
     width: auto;
 }
 
-/* Stylizacja dla nawigacji głównej */
 header nav {
     display: flex;
-    gap: 20px; /* Większy odstęp między linkami */
+    gap: 20px;
 }
 
 header nav a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    padding: 8px 16px; /* Większy padding, żeby linki były bardziej przestronne */
+    padding: 8px 16px;
     border-radius: 5px;
     transition: background-color 0.3s;
 }
@@ -34,53 +31,58 @@ header nav a:hover {
     background-color: #ff5733;
 }
 
-/* Sekcja z obrazkiem użytkownika i menu */
 header section:last-child {
     position: relative;
 }
 
-/* Ukryte menu */
 header section:last-child .menu {
-    display: none; /* Ukryte domyślnie */
+    display: none;
     position: absolute;
-    top: 70px; /* Pozycja pod obrazkiem użytkownika */
+    top: 100%;
     right: 0;
     background-color: #fff;
     color: #333;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    min-width: 250px; /* Zwiększenie szerokości menu */
-    padding: 15px; /* Większy padding w menu */
+    min-width: 250px;
+    padding: 15px;
+    margin-bottom: 0;
 }
 
-/* Menu - linki */
 header section:last-child .menu .menu-item {
     color: #333;
     text-decoration: none;
     font-weight: bold;
-    padding: 12px 18px; /* Większy padding, żeby linki były łatwiejsze do kliknięcia */
+    padding: 12px 18px;
     display: block;
     transition: background-color 0.3s;
+    margin-top: 0;
 }
 
 header section:last-child .menu .menu-item:hover {
     background-color: #f0f0f0;
 }
 
-/* Pokazywanie menu po najechaniu na obrazek */
 header section:last-child:hover .menu {
-    display: block; /* Menu pojawia się po najechaniu */
+    display: block;
 }
 
-/* Dodatkowe style na obrazek użytkownika */
+header section:first-child img {
+    transition: transform 2s;
+}
+
+header section:first-child img:hover {
+    transform: rotate(360deg);
+}
+
 header section:last-child img {
-    height: 50px; /* Zwiększenie rozmiaru obrazka */
+    height: 50px;
     width: 50px;
     border-radius: 50%;
-    cursor: pointer; /* Wskazuje na możliwość interakcji */
+    cursor: pointer;
     transition: transform 0.3s;
 }
 
 header section:last-child img:hover {
-    transform: scale(1.1); /* Lekkie powiększenie obrazka po najechaniu */
+    transform: scale(1.1);
 }
