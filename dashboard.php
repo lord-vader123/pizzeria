@@ -1,11 +1,14 @@
 <?php
 session_start();
 define("__ROOT__", $_SESSION['__ROOT__']);
+include_once __ROOT__ . '/php/login-mysql.php';
 
 if (!isset($_SESSION['login']) && !isset($_SESSION['password'])) {
     if (!isset($_COOKIE['login']) && !isset($_COOKIE['password'])) {
         header("Location: /index.php");
     }
+    $_SESSION['login'] = $_COOKIE['login']; 
+    $_SESSION['password'] = $_COOKIE['password']; 
 }
 ?>
 <!DOCTYPE html>
