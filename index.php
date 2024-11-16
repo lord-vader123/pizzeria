@@ -4,7 +4,7 @@ session_start();
 define("__ROOT__", __DIR__);
 $_SESSION['__ROOT__'] = __ROOT__;
 
-if (isset($_SESSION['id']) || isset($_COOCKIE['login']) && isset($_COOKIE['haslo'])) {
+if (isset($_SESSION['login']) && $_SESSION['password'] || isset($_COOCKIE['login']) && isset($_COOKIE['haslo'])) {
     header('Location: dashboard.php');
     exit();
 }

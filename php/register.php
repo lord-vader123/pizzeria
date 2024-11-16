@@ -63,7 +63,6 @@ include_once __ROOT__ . '/php/login-mysql.php';
 
             <section id="info">
             <?php
-            echo __ROOT__ . '/assets/users/';
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 try {
                     $password = password_hash($_POST['haslo'], PASSWORD_BCRYPT);
@@ -104,6 +103,13 @@ include_once __ROOT__ . '/php/login-mysql.php';
                     }
 
                     echo "Rejestracja zakończona sukcesem!";
+                    setcookie("login", $_POST['login'], time() + 3600, '/');
+                    setcookie("password", $password, time() + 3600, '/');
+                    $_SESSION['login'] =  $_POST['login'];
+                    $_SESSION['password'] = $password;
+                    header("Location: /pizzeria/dashboard.php");
+                    exit();
+
                 } catch (Exception $e) {
                     echo "Wystąpił błąd: " . $e->getMessage();
                 }
