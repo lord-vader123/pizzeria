@@ -30,7 +30,9 @@ include_once __ROOT__ . '/php/login-mysql.php';
 
             <button type="reset">Wyczyść</button>
             <button type="submit">Zaloguj się</button>
+
         </form>
+        <a href="/pizzeria/php/register.php">Nie masz jeszcze konta? Zarejestruj się!</a>
         <?php
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $stmt = $conn->prepare("SELECT haslo FROM uzytkownik WHERE login = ?");
@@ -44,6 +46,9 @@ include_once __ROOT__ . '/php/login-mysql.php';
 
                 if (password_verify($_POST['haslo'], $hashed_password)) {
                     $_SESSION['login'] = $_POST['login'];
+                    $_SESSION['password'] = $_POST['haslo'];
+                    setcookie("login", $_POST['login'], time() + 3600, '/');
+                    setcookie("password", $password, time() + 3600, '/');
                     header("Location: /pizzeria/dashboard.php");
                     exit();
                 } else {
