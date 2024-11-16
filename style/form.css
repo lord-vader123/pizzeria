@@ -1,0 +1,108 @@
+/* Stylizacja dla formularzy */
+form {
+    background-color: #f4f4f4; /* Tło formularza */
+    padding: 30px; /* Większy odstęp wewnętrzny */
+    border-radius: 10px; /* Zaokrąglone rogi */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lekki cień */
+    max-width: 600px; /* Maksymalna szerokość formularza */
+    margin: 20px auto; /* Wycentrowanie formularza */
+}
+
+/* Stylowanie etykiet */
+form label {
+    font-size: 16px; /* Większa czcionka dla etykiet */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px; /* Odstęp poniżej etykiety */
+    color: #333;
+}
+
+/* Stylowanie pól tekstowych i formularza */
+form input[type="text"],
+form input[type="password"],
+form input[type="number"],
+form input[type="file"],
+form input[type="radio"] {
+    width: 100%; /* Szerokość na całej szerokości formularza */
+    padding: 12px 15px; /* Większy padding dla komfortu */
+    margin-bottom: 20px; /* Odstęp pomiędzy polami */
+    border: 1px solid #ddd; /* Subtelna ramka */
+    border-radius: 5px; /* Zaokrąglone rogi */
+    background-color: #fff;
+    font-size: 14px; /* Rozmiar czcionki */
+    color: #333;
+    box-sizing: border-box; /* Umożliwia prawidłowe liczenie szerokości */
+    transition: border 0.3s ease-in-out; /* Efekt zmiany ramki */
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="number"]:focus,
+form input[type="file"]:focus {
+    border-color: #ff5733; /* Kolor obramowania przy fokusie */
+    outline: none;
+}
+
+/* Stylizacja przycisków formularza */
+form button[type="submit"],
+form button[type="reset"] {
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    padding: 15px 25px; /* Większe przyciski */
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
+
+form button[type="submit"]:hover,
+form button[type="reset"]:hover {
+    background-color: #e04f2f;
+}
+
+/* Stylizacja przycisków resetowania */
+form button[type="reset"] {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+form button[type="reset"]:hover {
+    background-color: #ddd;
+}
+
+/* Wyrównanie i stylizacja przycisków w formularzu */
+form .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Stylizacja radiobuttonów */
+form input[type="radio"] {
+    width: auto; /* Przywrócenie domyślnej szerokości */
+    margin-right: 10px; /* Odstęp między radio buttonem a etykietą */
+}
+
+/* Stylizacja dla grupy płci */
+form .gender-group {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Odstęp między opcjami płci */
+    margin-bottom: 20px;
+}
+
+/* Pulpit w przypadku pliku */
+form input[type="file"] {
+    padding: 10px;
+}
+
+/* Marginesy dla całego formularza */
+form input[type="file"],
+form input[type="text"],
+form input[type="password"],
+form input[type="number"] {
+    margin-bottom: 20px;
+}
