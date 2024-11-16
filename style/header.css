@@ -1,0 +1,86 @@
+/* Podstawowe stylowanie nagłówka */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Większy odstęp od boków */
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Sekcja z logo */
+header section img {
+    height: 60px; /* Większy obrazek logo */
+    width: auto;
+}
+
+/* Stylizacja dla nawigacji głównej */
+header nav {
+    display: flex;
+    gap: 20px; /* Większy odstęp między linkami */
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px; /* Większy padding, żeby linki były bardziej przestronne */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+header nav a:hover {
+    background-color: #ff5733;
+}
+
+/* Sekcja z obrazkiem użytkownika i menu */
+header section:last-child {
+    position: relative;
+}
+
+/* Ukryte menu */
+header section:last-child .menu {
+    display: none; /* Ukryte domyślnie */
+    position: absolute;
+    top: 70px; /* Pozycja pod obrazkiem użytkownika */
+    right: 0;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    min-width: 250px; /* Zwiększenie szerokości menu */
+    padding: 15px; /* Większy padding w menu */
+}
+
+/* Menu - linki */
+header section:last-child .menu .menu-item {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 18px; /* Większy padding, żeby linki były łatwiejsze do kliknięcia */
+    display: block;
+    transition: background-color 0.3s;
+}
+
+header section:last-child .menu .menu-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Pokazywanie menu po najechaniu na obrazek */
+header section:last-child:hover .menu {
+    display: block; /* Menu pojawia się po najechaniu */
+}
+
+/* Dodatkowe style na obrazek użytkownika */
+header section:last-child img {
+    height: 50px; /* Zwiększenie rozmiaru obrazka */
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer; /* Wskazuje na możliwość interakcji */
+    transition: transform 0.3s;
+}
+
+header section:last-child img:hover {
+    transform: scale(1.1); /* Lekkie powiększenie obrazka po najechaniu */
+}

@@ -1,7 +1,6 @@
 <header>
     <section>
-        <img src="./assets/logo.png" alt="Logo pizzeri">
-
+        <a href="/pizzeria/index.php"><img src="/pizzeria/assets/logo.png" alt="Logo pizzeri"></a>
     </section>
 
     <nav>
@@ -13,8 +12,8 @@
     <section>
         <img src="/pizzeria/assets/user-symbol.jpg" alt="Symbol użytkownika" />
         <nav class="menu">
-            <a href="/pizzeria/php/login.php">Zaloguj się</a>
-            <a href="/pizzeria/php/register.php">Zarejestruj się</a>
+            <a class="menu-item" href="/pizzeria/php/login.php">Zaloguj się</a>
+            <a class="menu-item" href="/pizzeria/php/register.php">Zarejestruj się</a>
         </nav>
     </section>
 </header>
