@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Lis 16, 2024 at 04:21 PM
+-- Generation Time: Lis 16, 2024 at 04:39 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -59,6 +59,7 @@ CREATE TABLE `uzytkownik` (
   `id` int(11) NOT NULL,
   `imie` varchar(50) DEFAULT NULL,
   `nazwisko` varchar(50) DEFAULT NULL,
+  `login` int(60) NOT NULL,
   `haslo` varchar(60) NOT NULL,
   `plec` tinyint(1) DEFAULT NULL,
   `zdjecie_src` varchar(100) DEFAULT NULL,
