@@ -23,12 +23,13 @@ if ($pos !== false) {
     <nav>
         <a href="/pizzeria/subpages/menu.php">Menu</a>
         <a href="/pizzeria/subpages/zamow.php">Zamów</a>
-        <a href="/pizzeria/subpages/edytuj.php">Edytuj</a>
+        <a href="/pizzeria/subpages/zamowienia.php">Zobacz swoje zamówienia</a>
     </nav>
 
     <section>
         <img src="<?php echo $zdjecie_src ?>" alt="Symbol użytkownika" />
         <nav class="menu">
+            <a class="menu-item" href="/pizzeria/php/settings.php">Ustawienia</a>
             <a class="menu-item" href="/pizzeria/php/logout.php">Wyloguj się</a>
         </nav>
     </section>

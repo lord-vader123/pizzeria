@@ -35,18 +35,19 @@ include_once __ROOT__ . '/php/login-mysql.php';
         <a href="/pizzeria/php/register.php">Nie masz jeszcze konta? Zarejestruj się!</a>
         <?php
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            $stmt = $conn->prepare("SELECT haslo FROM uzytkownik WHERE login = ?");
+            $stmt = $conn->prepare("SELECT id, haslo FROM uzytkownik WHERE login = ?");
             $stmt->bind_param("s", $_POST['login']);
             $stmt->execute();
             $stmt->store_result();
 
             if ($stmt->num_rows > 0) {
-                $stmt->bind_result($hashed_password);
+                $stmt->bind_result($id, $hashed_password);
                 $stmt->fetch();
 
                 if (password_verify($_POST['haslo'], $hashed_password)) {
                     $_SESSION['login'] = $_POST['login'];
                     $_SESSION['password'] = $_POST['haslo'];
+                    $_SESSION['id'] = $id;
                     setcookie("login", $_POST['login'], time() + 3600, '/');
                     setcookie("password", $password, time() + 3600, '/');
                     header("Location: /pizzeria/dashboard.php");

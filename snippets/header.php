@@ -6,7 +6,7 @@
     <nav>
         <a href="/pizzeria/subpages/menu.php">Menu</a>
         <a onclick="if (confirm('Musisz być zalogowany, bo złożyć zamówienie. Czy chcesz się zalogować?')) window.location.replace('/pizzeria/php/login.php')">Zamów</a>
-        <a onclick="if (confirm('Musisz być zalogowany, bo edytować menu. Czy chcesz się zalogować?')) window.location.replace('/pizzeria/php/login.php');">Edytuj</a>
+        <a onclick="if (confirm('Musisz być zalogowany, bo zobaczyć swoje zamówienia. Czy chcesz się zalogować?')) window.location.replace('/pizzeria/php/login.php');">Edytuj</a>
     </nav>
 
     <section>

@@ -19,7 +19,7 @@ include_once __ROOT__ . '/php/login-mysql.php';
 
 <body>
     <?php include_once __ROOT__ . '/snippets/header.php'; ?>
-    
+
     <main>
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
             <label for="imie">Podaj imię</label>
@@ -62,63 +62,65 @@ include_once __ROOT__ . '/php/login-mysql.php';
             <button type="submit" id="submit">Zatwierdź</button>
 
             <section id="info">
-            <?php
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                try {
-                    $password = password_hash($_POST['haslo'], PASSWORD_BCRYPT);
+                <?php
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    try {
+                        $password = password_hash($_POST['haslo'], PASSWORD_BCRYPT);
 
-                    $sql1 = "INSERT INTO adres (ulica, nr_domu, nr_mieszkania, kod_pocztowy) VALUES (?, ?, ?, ?)";
-                    $stmt1 = $conn->prepare($sql1);
-                    $stmt1->bind_param("siss", $_POST['ulica'], $_POST['dom'], $_POST['mieszkanie'], $_POST['kod']);
-                    if (!$stmt1->execute()) {
-                        throw new Exception("Błąd przy dodawaniu adresu: " . $stmt1->error);
-                    }
-
-                    $adres_id = $conn->insert_id;
-
-                    $image_path = null;
-                    if (!empty($_FILES['zdjecie']['name'])) {
-                        $upload_dir = __ROOT__ . '/assets/users/';
-                        $image_path = $upload_dir . basename($_FILES['zdjecie']['name']);
-                        if (!move_uploaded_file($_FILES['zdjecie']['tmp_name'], $image_path)) {
-                            throw new Exception("Nie udało się przesłać pliku ze zdjęciem. image_path = " . $image_path);
+                        $sql1 = "INSERT INTO adres (ulica, nr_domu, nr_mieszkania, kod_pocztowy) VALUES (?, ?, ?, ?)";
+                        $stmt1 = $conn->prepare($sql1);
+                        $stmt1->bind_param("siss", $_POST['ulica'], $_POST['dom'], $_POST['mieszkanie'], $_POST['kod']);
+                        if (!$stmt1->execute()) {
+                            throw new Exception("Błąd przy dodawaniu adresu: " . $stmt1->error);
                         }
+
+                        $adres_id = $conn->insert_id;
+
+                        $image_path = null;
+                        if (!empty($_FILES['zdjecie']['name'])) {
+                            $upload_dir = __ROOT__ . '/assets/users/';
+                            $image_path = $upload_dir . basename($_FILES['zdjecie']['name']);
+                            if (!move_uploaded_file($_FILES['zdjecie']['tmp_name'], $image_path)) {
+                                throw new Exception("Nie udało się przesłać pliku ze zdjęciem. image_path = " . $image_path);
+                            }
+                        }
+
+                        $sql2 = "INSERT INTO uzytkownik (imie, nazwisko, login, haslo, plec, zdjecie_src, adres) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                        $stmt2 = $conn->prepare($sql2);
+                        $stmt2->bind_param(
+                            "ssssiss",
+                            $_POST['imie'],
+                            $_POST['nazwisko'],
+                            $_POST['login'],
+                            $password,
+                            $_POST['plec'],
+                            $image_path,
+                            $adres_id
+                        );
+
+                        if (!$stmt2->execute()) {
+                            throw new Exception("Błąd przy dodawaniu użytkownika: " . $stmt2->error);
+                        }
+                        $id = $conn->insert_id;
+
+                        echo "Rejestracja zakończona sukcesem!";
+                        setcookie("login", $_POST['login'], time() + 3600, '/');
+                        setcookie("password", $password, time() + 3600, '/');
+                        $_SESSION['login'] =  $_POST['login'];
+                        $_SESSION['password'] = $password;
+                        $_SESSION['id'] = $id;
+                        header("Location: /pizzeria/dashboard.php");
+                        exit();
+                    } catch (Exception $e) {
+                        echo "Wystąpił błąd: " . $e->getMessage();
                     }
-
-                    $sql2 = "INSERT INTO uzytkownik (imie, nazwisko, login, haslo, plec, zdjecie_src, adres) VALUES (?, ?, ?, ?, ?, ?, ?)";
-                    $stmt2 = $conn->prepare($sql2);
-                    $stmt2->bind_param(
-                        "ssssiss",
-                        $_POST['imie'],
-                        $_POST['nazwisko'],
-                        $_POST['login'],
-                        $password,
-                        $_POST['plec'],
-                        $image_path,
-                        $adres_id
-                    );
-
-                    if (!$stmt2->execute()) {
-                        throw new Exception("Błąd przy dodawaniu użytkownika: " . $stmt2->error);
-                    }
-
-                    echo "Rejestracja zakończona sukcesem!";
-                    setcookie("login", $_POST['login'], time() + 3600, '/');
-                    setcookie("password", $password, time() + 3600, '/');
-                    $_SESSION['login'] =  $_POST['login'];
-                    $_SESSION['password'] = $password;
-                    header("Location: /pizzeria/dashboard.php");
-                    exit();
-
-                } catch (Exception $e) {
-                    echo "Wystąpił błąd: " . $e->getMessage();
                 }
-            }
-            ?>
+                ?>
             </section>
         </form>
     </main>
 
-<script src="/pizzeria/js/validate.js"></script>
+    <script src="/pizzeria/js/validate.js"></script>
 </body>
+
 </html>

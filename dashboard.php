@@ -19,6 +19,9 @@ include_once __ROOT__ . '/php/check-logged.php';
 <body>
     <?php include_once __ROOT__ . '/snippets/header-logged.php'; ?>
 
+    <main>
+        <?php echo print_r($_SESSION); ?>
+    </main>
 
 </body>
 
