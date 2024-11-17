@@ -8,6 +8,8 @@ $stmt->bind_result($zdjecie_src);
 
 $stmt->fetch();
 
+$zdjecie_src = str_replace("\\", "/", $zdjecie_src);
+
 $pos = strpos($zdjecie_src, "/pizzeria");
 
 if ($pos !== false) {
