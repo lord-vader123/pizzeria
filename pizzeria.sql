@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Lis 16, 2024 at 11:17 PM
+-- Generation Time: Lis 17, 2024 at 03:54 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -48,6 +48,26 @@ CREATE TABLE `pizza` (
   `rozmiar` enum('Mała','Średnia','Duża') DEFAULT NULL,
   `cena` float(6,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Dumping data for table `pizza`
+--
+
+INSERT INTO `pizza` (`id`, `nazwa`, `skladniki`, `rozmiar`, `cena`) VALUES
+(1, 'Margarita', 'Sos pomidorowy, ser', 'Średnia', 40.55),
+(2, 'Caprisiosa', 'Sos pomidorowy, ser, pieczarki', 'Mała', 40.22),
+(3, 'Z krewetkami', 'Sos pomidorowy, krewetki, ser, pieczarki', 'Duża', 120.00),
+(4, 'Z rucolą', 'Sos pomidorowy, ser, rucola', 'Średnia', 50.00),
+(5, 'Pepperoni', 'sos pomidorowy, mozzarella, pepperoni', 'Średnia', 26.99),
+(6, 'Hawajska', 'sos pomidorowy, mozzarella, szynka, ananas', 'Duża', 28.50),
+(7, 'Quattro Stagioni', 'sos pomidorowy, mozzarella, szynka, pieczarki, karczochy, oliwki', 'Średnia', 30.00),
+(8, 'Vegetariana', 'sos pomidorowy, mozzarella, papryka, cukinia, bakłażan, cebula', 'Duża', 27.99),
+(9, 'Diavola', 'sos pomidorowy, mozzarella, salami, papryczki chili', 'Mała', 23.50),
+(10, 'Frutti di Mare', 'sos pomidorowy, mozzarella, owoce morza, czosnek', 'Średnia', 32.00),
+(11, 'BBQ Chicken', 'sos BBQ, mozzarella, kurczak, cebula, kukurydza', 'Duża', 29.99),
+(12, 'Carbonara', 'sos śmietanowy, mozzarella, boczek, jajko, cebula', 'Średnia', 26.50),
+(13, 'Marinara', 'sos pomidorowy, czosnek, oliwa, oregano, bazylia', 'Mała', 21.00),
+(14, 'Truflowa', 'sos pomidorowy, mozzarella, trufle, pieczarki, rukola', 'Duża', 34.00);
 
 -- --------------------------------------------------------
 
@@ -126,7 +146,7 @@ ALTER TABLE `adres`
 -- AUTO_INCREMENT for table `pizza`
 --
 ALTER TABLE `pizza`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `uzytkownik`
