@@ -46,7 +46,7 @@ include_once __ROOT__ . '/php/login-mysql.php';
 
                 if (password_verify($_POST['haslo'], $hashed_password)) {
                     $_SESSION['login'] = $_POST['login'];
-                    $_SESSION['password'] = $_POST['haslo'];
+                    $_SESSION['password'] = $hashed_password;
                     $_SESSION['id'] = $id;
                     setcookie("login", $_POST['login'], time() + 3600, '/');
                     setcookie("password", $password, time() + 3600, '/');

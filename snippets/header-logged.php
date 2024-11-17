@@ -22,6 +22,7 @@ if ($pos !== false) {
 
     <nav>
         <a href="/pizzeria/subpages/menu.php">Menu</a>
+        <a href="/pizzeria/subpages/galeria.php">Galeria</a>
         <a href="/pizzeria/subpages/zamow.php">Zamów</a>
         <a href="/pizzeria/subpages/zamowienia.php">Zobacz swoje zamówienia</a>
     </nav>
