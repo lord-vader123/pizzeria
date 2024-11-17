@@ -5,3 +5,4 @@ $password = "";
 $db = "pizzeria";
 
 $conn = new mysqli($server, $user, $password, $db) or die("Error connecting to database");
+$conn->set_charset("utf8mb4");

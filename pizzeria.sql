@@ -33,7 +33,7 @@ CREATE TABLE `adres` (
   `nr_domu` int(11) DEFAULT NULL,
   `nr_mieszkania` int(11) DEFAULT NULL,
   `kod_pocztowy` varchar(7) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 -- --------------------------------------------------------
 
@@ -45,9 +45,9 @@ CREATE TABLE `pizza` (
   `id` int(11) NOT NULL,
   `nazwa` varchar(50) DEFAULT NULL,
   `skladniki` varchar(255) DEFAULT NULL,
-  `rozmiar` enum('Ma?a','?rednia','Du?a') DEFAULT NULL,
+  `rozmiar` enum('Mała','Średnia','Duża') DEFAULT NULL,
   `cena` float(6,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,7 @@ CREATE TABLE `uzytkownik` (
   `plec` tinyint(1) DEFAULT NULL,
   `zdjecie_src` varchar(255) DEFAULT NULL,
   `adres` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 -- --------------------------------------------------------
 
@@ -78,7 +78,7 @@ CREATE TABLE `zamowienie` (
   `pizza_id` int(11) DEFAULT NULL,
   `ilosc` int(11) DEFAULT 1,
   `cena` float(6,2) DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Indeksy dla zrzutów tabel
