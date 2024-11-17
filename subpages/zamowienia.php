@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ALL);
 session_start();
 define("__ROOT__", $_SESSION['__ROOT__']);
 include_once __ROOT__ . '/php/login-mysql.php';
