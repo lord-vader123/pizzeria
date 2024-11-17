@@ -12,7 +12,7 @@ include_once __ROOT__ . '/php/check-logged.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/pizzeria/style/style.css">
-    <link rel="icon" href="./assets/favico.ico">
+    <link rel="icon" href="/pizzeria/assets/favico.ico">
     <title>Zamów</title>
 </head>
 
@@ -23,10 +23,24 @@ include_once __ROOT__ . '/php/check-logged.php';
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
             <h2>Twoje zamówienie:</h2>
             <label for="pizza">Twoja pizza</label>
-            <input type="text" id="pizza" name="pizza">
+            <input type="text" list="pizze" id="pizza" name="pizza" required>
+            <datalist id="pizze">
+                <?php
+                $result = $conn->query("SELECT id, nazwa FROM pizza;");
+                if (!$result) {
+                    echo "Błąd strony";
+                    exit();
+                }
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value=" . $row['id'] . ">" . $row['nazwa'] . "</option>";
+                }
+                ?>
+            </datalist>
             <label for="ilosc">Ile pizz pragniesz zamówić?</label>
-            <input type="number" id="ilosc" name="ilosc" min="0">
+            <input type="number" id="ilosc" name="ilosc" min="1" required>
         </form>
+
+
     </main>
 
 </body>
